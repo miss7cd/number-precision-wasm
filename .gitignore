@@ -9,9 +9,6 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist
-dist-ssr
-coverage
 *.local
 
 # Editor directories and files
@@ -23,4 +20,3 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-components.d.ts
