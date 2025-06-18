@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="module">
-import { add } from "./build/release.js";
-document.body.innerText = add(1, 2);
-</script>
+
 </head>
 <body></body>
+<script type="module">
+    import { plus } from "./dist/release.js";
+    var value = plus(0.1, 0.2)
+    // var value = plus(1.3, -5.09439403, 345346345.5645645, 0, -5.98)
+    document.body.innerText = value;
+    console.log(value)
+    
+</script>
 </html>

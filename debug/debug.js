@@ -17,30 +17,11 @@ async function instantiate(module, imports = {}) {
   const { exports } = await WebAssembly.instantiate(module, adaptedImports);
   const memory = exports.memory || imports.env.memory;
   const adaptedExports = Object.setPrototypeOf({
-    plus(arr, len) {
-      // assembly/index/plus(~lib/array/Array<f64>, i32) => f64
+    plus(arr) {
+      // assembly/index/plus(...~lib/array/Array<f64>) => f64
       arr = __lowerArray(__setF64, 4, 3, arr) || __notnull();
-      return exports.plus(arr, len);
-    },
-    minus(arr, len) {
-      // assembly/index/minus(~lib/array/Array<f64>, i32) => f64
-      arr = __lowerArray(__setF64, 4, 3, arr) || __notnull();
-      return exports.minus(arr, len);
-    },
-    times(arr, len) {
-      // assembly/index/times(~lib/array/Array<f64>, i32) => f64
-      arr = __lowerArray(__setF64, 4, 3, arr) || __notnull();
-      return exports.times(arr, len);
-    },
-    divide(arr, len) {
-      // assembly/index/divide(~lib/array/Array<f64>, i32) => f64
-      arr = __lowerArray(__setF64, 4, 3, arr) || __notnull();
-      return exports.divide(arr, len);
-    },
-    average(arr, len) {
-      // assembly/index/average(~lib/array/Array<f64>, i32) => f64
-      arr = __lowerArray(__setF64, 4, 3, arr) || __notnull();
-      return exports.average(arr, len);
+      exports.__setArgumentsLength(arguments.length);
+      return exports.plus(arr);
     },
   }, exports);
   function __liftString(pointer) {
@@ -95,10 +76,6 @@ export const {
   memory,
   add,
   plus,
-  minus,
-  times,
-  divide,
-  average,
 } = await (async url => instantiate(
   await (async () => {
     const isNodeOrBun = typeof process != "undefined" && process.versions != null && (process.versions.node != null || process.versions.bun != null);
@@ -106,4 +83,4 @@ export const {
     else { return await globalThis.WebAssembly.compileStreaming(globalThis.fetch(url)); }
   })(), {
   }
-))(new URL("release.wasm", import.meta.url));
+))(new URL("debug.wasm", import.meta.url));
