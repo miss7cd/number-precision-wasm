@@ -1,5 +1,26 @@
 {
+  "name": "number-precision",
+  "description": "Perform addition, subtraction, multiplication and division operations precisely using javascript",
+  "version": "0.1.0",
+  "private": false,
   "type": "module",
+  "main": "dist/release.js",
+  "types": "dist/release.d.ts",
+  "author": "wang",
+  "keywords": [
+    "number precision",
+    "floating problem",
+    "rounding error"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miss7cd/number-precision-wasm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miss7cd/number-precision-wasm/issues"
+  },
+  "homepage": "https://github.com/miss7cd/number-precision-wasm",
+  "license": "MIT",
   "exports": {
     ".": {
       "import": "./dist/release.js",
