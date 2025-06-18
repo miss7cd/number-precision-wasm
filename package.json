@@ -1,5 +1,5 @@
 {
-  "name": "number-precision",
+  "name": "number-precision-wasm",
   "description": "Perform addition, subtraction, multiplication and division operations precisely using javascript",
   "version": "0.1.0",
   "private": false,
